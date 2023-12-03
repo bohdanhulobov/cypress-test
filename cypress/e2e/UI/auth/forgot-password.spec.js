@@ -2,7 +2,7 @@
 
 import forgotPasswordPage from "../../../pages/auth/ForgotPassword.page";
 import loginPage from "../../../pages/auth/Login.page";
-import { emails } from "../../../utils/email-validation";
+import { improperEmails } from "../../../utils/email-validation";
 import { urls } from "../../../utils/page-urls";
 
 describe("Forgot Password page tests", () => {
