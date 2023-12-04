@@ -2,11 +2,11 @@
 
 import headerComponent from "../../../pages/components/header.component";
 import loginPage from "../../../pages/auth/Login.page";
-import { emails } from "../../../utils/email-validation";
+import { improperEmails } from "../../../utils/email-validation";
 
 describe("Login page tests", () => {
-  it("Email validation", () => {
-    cy.wrap(Object.values(emails)).each((email) => {
+  it("Invalid emails validation (negative tests)", () => {
+    cy.wrap(Object.values(improperEmails)).each((email) => {
       loginPage.openLoginPage();
       loginPage.emailInput.type(email);
       loginPage.title.click();

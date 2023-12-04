@@ -1,4 +1,4 @@
-export const emails = {
+export const improperEmails = {
   withoutUsername: "@email.com",
   withoutAtSymbol: "usernameemail.com",
   withoutDomain: "username@.com",

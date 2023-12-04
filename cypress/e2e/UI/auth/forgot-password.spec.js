@@ -7,7 +7,7 @@ import { urls } from "../../../utils/page-urls";
 
 describe("Forgot Password page tests", () => {
   it("Improper emails validation (negative tests)", () => {
-    cy.wrap(Object.values(emails)).each((email) => {
+    cy.wrap(Object.values(improperEmails)).each((email) => {
       forgotPasswordPage.openForgotPasswordPage();
       forgotPasswordPage.emailInput.type(email);
       forgotPasswordPage.title.click();

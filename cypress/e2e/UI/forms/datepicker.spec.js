@@ -12,6 +12,6 @@ describe("Datepicker page tests", () => {
 
     const currentDate = moment().format("ll");
 
-    DatepickerPage.pickerButton.eq(0).should("have.value", currentDate);
+    DatepickerPage.pickerButton.eq(0).should("have.prop", "value", currentDate);
   });
 });
