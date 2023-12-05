@@ -33,14 +33,14 @@ describe("Request to JSONPlaceholder", () => {
     cy.fixture("json-placeholder.body").then((fixtureValues) => {
       const title = fixtureValues.title;
 
-      cy.request("PUT", jsonPlaceholderUrl + testUserId, { title })
+      cy.request("PATCH", jsonPlaceholderUrl + testUserId, { title })
         .its("status")
         .should("eq", 200);
     });
   });
 
   it("DELETE request test - status code and response time check", () => {
-    cy.request("PUT", jsonPlaceholderUrl + testUserId).then((response) => {
+    cy.request("DELETE", jsonPlaceholderUrl + testUserId).then((response) => {
       expect(response.status).eq(200);
       expect(response.duration).lessThan(200);
     });
