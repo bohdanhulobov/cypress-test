@@ -11,6 +11,14 @@ jobs:
   cypress:
     runs-on: ubuntu-latest
     steps:
+      - name: Cache node modules
+        uses: actions/cache@v2
+        id: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
       - name: getting project code
         uses: actions/checkout/@v4
       - name: dependencies installation
@@ -24,4 +32,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: cypress test run results - mochawesome
-          path: cypress/results
+          path: cypress/results/mochawesome-merged.html
