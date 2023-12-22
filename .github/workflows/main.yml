@@ -1,0 +1,21 @@
+name: cypress tests run
+on: 
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [opened, edited, reopened]
+
+jobs:
+  cypress:
+    runs-on: ubuntu-latest
+    steps:
+      - name: getting project code
+        uses: actions/checkout/@v4
+      - name: dependencies installation
+        run: npm install --force
+      - name: running all tests
+        run: npm run cy:run:server
+        
+      
