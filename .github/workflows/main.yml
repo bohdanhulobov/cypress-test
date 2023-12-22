@@ -1,5 +1,5 @@
 name: cypress tests run
-on: 
+on:
   workflow_dispatch:
   push:
     branches:
@@ -17,5 +17,9 @@ jobs:
         run: npm install --force
       - name: running all tests
         run: npm run cy:run:server
-        
-      
+      - name: report generation
+        if: failure() || success()
+        uses: actions/upload-artifact@v3
+        with:
+          name: cypress test run results - mochawesome
+          path: cypress/results
