@@ -18,6 +18,8 @@ jobs:
       - name: running all tests
         run: npm run cy:run:server
       - name: report generation
+        run: npm run report:generate
+      - name: report uploading
         if: failure() || success()
         uses: actions/upload-artifact@v3
         with:
