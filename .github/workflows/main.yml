@@ -1,5 +1,4 @@
 name: cypress tests run
-
 on:
   workflow_dispatch:
   push:
@@ -12,19 +11,10 @@ jobs:
   cypress:
     runs-on: ubuntu-latest
     steps:
-      - name: Cache node modules
-        uses: actions/cache@v2
-        id: cache-node-modules
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
       - name: getting project code
-        uses: actions/checkout@v2
-      - name: Restore cached node modules
-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        run: npm ci
+        uses: actions/checkout/@v4
+      - name: dependencies installation
+        run: npm install --force
       - name: running all tests
         run: npm run cy:run:server
       - name: report generation
