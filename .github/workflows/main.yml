@@ -11,8 +11,17 @@ jobs:
   cypress:
     runs-on: ubuntu-latest
     steps:
+      - name: Cache Node.js modules
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+
       - name: getting project code
-        uses: actions/checkout/@v4
+        uses: actions/checkout@v4
       - name: dependencies installation
         run: npm install --force
       - name: running all tests
@@ -24,4 +33,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: cypress test run results - mochawesome
-          path: cypress/results/mochawesome-merged.html
+          path: cypress/results
