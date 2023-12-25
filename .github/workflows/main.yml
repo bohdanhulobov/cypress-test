@@ -27,6 +27,7 @@ jobs:
       - name: running all tests
         run: npm run cy:run:server
       - name: report generation
+        if: failure() || success()
         run: npm run report:generate
       - name: report uploading
         if: failure() || success()
